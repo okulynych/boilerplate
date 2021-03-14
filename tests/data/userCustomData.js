@@ -1,0 +1,18 @@
+export const userCustomData = {
+  repoName: "my_new_repo",
+  repoDescription: "My brand new metal shiny repo",
+  repoAutoInit: true,
+  repoType: "private",
+  branchName: "feature/myBranch",
+  defaultBranchName: "main",
+  readMeFile: "README.md",
+  readMEContent: "This is newly created repo",
+  readMeCommitMessage: "Initial Commit",
+  fileName: "newFile.js",
+  fileContent: 'console.log("Hello from Testcafe")',
+  commitMessage: "This is commit message made with Testcafe",
+  fileContentUpdate: 'console.log("Hello from Rainbow")',
+  commitMessageUpdate: "This is commit message made with Rainbow",
+  pullRequestTitle: "This is my first PR",
+  pullRequestText: "I'm so proud of myself",
+};
