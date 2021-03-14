@@ -8,8 +8,10 @@
   "scripts": {
     "test-frontend": "testcafe \"chrome --start-maximized\" ./tests/frontend --assertion-timeout 20000 --skip-js-errors",
     "test-frontend:report": "npm run test-frontend -- --reporter html:reports/frontend/report.html",
+    "test-frontend-ci":  "testcafe \"chrome:headless --start-maximized\" ./tests/frontend --assertion-timeout 20000 --skip-js-errors",
     "test-backend": "jest ./tests/backend",
-    "test-all": "npm run test-backend & npm run test-frontend:report"
+    "test-all": "npm run test-backend & npm run test-frontend:report",
+    "test-all-ci": "npm run test-backend & npm run test-frontend-ci"
   },
   "author": "Sasha",
   "license": "ISC",

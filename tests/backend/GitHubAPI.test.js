@@ -1,7 +1,7 @@
 import { userCustomData } from "../data/userCustomData";
 import { defaultUser } from "../../utils/users";
 import { gitHubApiUrl } from "../../utils/constants";
-// this is dummy comment
+
 const frisby = require("frisby");
 
 frisby.globalSetup({
