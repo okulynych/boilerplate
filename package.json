@@ -7,8 +7,8 @@
   },
   "scripts": {
     "test-frontend": "testcafe \"chrome --start-maximized\" ./tests/frontend --assertion-timeout 20000 --skip-js-errors",
-    "test-frontend:report": "npm run test-frontend -- --reporter html:reports/frontend/report.html",
-    "test-frontend-ci":  "testcafe \"chrome:headless --start-maximized\" ./tests/frontend --assertion-timeout 20000 --skip-js-errors",
+    "test-frontend:report": "npm run test-frontend -- --reporter html:reports/frontend/report.html  --screenshots path=reports/frontend/screenshots,fullPage=true,takeOnFails=true --video reports/frontend/videos",
+    "test-frontend-ci": "testcafe \"chrome:headless --start-maximized\" ./tests/frontend --assertion-timeout 20000 --skip-js-errors",
     "test-backend": "jest ./tests/backend",
     "test-all": "npm run test-backend & npm run test-frontend:report",
     "test-all-ci": "npm run test-backend & npm run test-frontend-ci"
@@ -25,6 +25,7 @@
     "testcafe": "^1.4.3"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
     "node-fetch": "^2.6.1",
     "testcafe-reporter-html": "^1.4.4"
   },
