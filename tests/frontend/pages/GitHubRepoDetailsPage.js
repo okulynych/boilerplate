@@ -52,6 +52,10 @@ export const mergePullRequestBtn = Selector("button").withText(
 );
 export const confirmMergeBtn = Selector("button").withText("Confirm merge");
 
+export function pullRequestStatus(status) {
+  return Selector("span[title*=Status]").withText(status);
+}
+
 export async function fillFileAndCommit(
   fileName,
   fileContent,
@@ -152,8 +156,9 @@ export async function createPullRequest() {
     .typeText(pullRequestBodyInput, userCustomData.pullRequestText)
     .click(createPullRequestBtn)
     .expect(getCurrentPageUrl())
-    .contains("/pull/");
-  //add expected
+    .contains("/pull/")
+    .expect(pullRequestStatus("Open").exists)
+    .ok();
 }
 
 export async function mergePullRequest() {
@@ -164,5 +169,6 @@ export async function mergePullRequest() {
     .click(pullRequestNameLink)
     .click(mergePullRequestBtn)
     .click(confirmMergeBtn);
-  //add expected
+  await t.eval(() => location.reload(true));
+  await t.expect(pullRequestStatus("Merged")).ok();
 }

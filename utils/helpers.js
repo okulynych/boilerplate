@@ -41,7 +41,7 @@ async function unzipResponseBody(t, options) {
   });
 }
 async function convertBufferBodyToString(t, options) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     return resolve(JSON.parse(options.body.toString()));
   });
 }
