@@ -25,9 +25,7 @@ export async function addNewRepo() {
     .typeText(repoNameInput, userCustomData.repoName)
     .expect(successBaloon.exists)
     .ok();
-
   await setRepoType(userCustomData.repoType);
-
   await t
     .expect(submitBtn.hasAttribute("disabled"))
     .notOk()

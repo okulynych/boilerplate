@@ -3,7 +3,6 @@ import { getCurrentPageUrl } from "../../../utils/helpers";
 import { userCustomData } from "../../data/userCustomData";
 
 export const GitHubRepoDetailsRoot = Selector("#repo-content-pjax-container");
-
 export const creatingNewFileLink = GitHubRepoDetailsRoot.find(
   "a"
 ).withExactText("creating a new file");
@@ -15,11 +14,9 @@ export const commitSummaryInput = GitHubRepoDetailsRoot.find(
   "#commit-summary-input"
 );
 export const submitFileBtn = GitHubRepoDetailsRoot.find("#submit-file");
-
 export const swithBranchDropDown = Selector("#branch-select-menu");
 export const createNewBranchInput = Selector("#context-commitish-filter-field");
 export const createBranchLink = Selector("span").withText("Create branch: ");
-
 export const branchesLink = Selector("span").withExactText("branches");
 export const branchLinkByName = Selector(
   `a[class*=branch][href*="${userCustomData.branchName}"]`
@@ -34,9 +31,7 @@ export const createdFileLink = Selector(
 export const createdFileCommitMessage = Selector(
   `a[title="${userCustomData.commitMessage}"]`
 );
-
 export const editThisFileBtn = Selector('button[aria-label="Edit this file"]');
-
 export const newPullRequestBtn = Selector("a")
   .withText("New pull request")
   .nth(0);
@@ -51,7 +46,6 @@ export const mergePullRequestBtn = Selector("button").withText(
   "Merge pull request"
 );
 export const confirmMergeBtn = Selector("button").withText("Confirm merge");
-
 export function pullRequestStatus(status) {
   return Selector("span[title*=Status]").withText(status);
 }
@@ -76,7 +70,6 @@ export async function commitReadMeFile() {
     .click(creatingNewFileLink)
     .expect(submitFileBtn.hasAttribute("disabled"))
     .ok();
-
   await fillFileAndCommit(
     userCustomData.readMeFile,
     userCustomData.readMEContent,
@@ -107,13 +100,11 @@ export async function addFile() {
     .expect(createFileMenuItem.visible)
     .ok()
     .click(createFileMenuItem);
-
   await fillFileAndCommit(
     userCustomData.fileName,
     userCustomData.fileContent,
     userCustomData.commitMessage
   );
-
   await t
     .expect(createdFileLink.visible)
     .ok()
@@ -131,9 +122,7 @@ export async function updateFile() {
     .ok()
     .expect(createdFileCommitMessage.visible)
     .ok();
-
   await t.click(createdFileLink).click(editThisFileBtn);
-
   await fillFileAndCommit(
     userCustomData.fileName,
     userCustomData.fileContentUpdate,
@@ -148,7 +137,6 @@ export async function createPullRequest() {
     .expect(newPullRequestBtn.visible)
     .ok()
     .click(newPullRequestBtn);
-
   await t
     .click(pullRequestTitle)
     .pressKey("ctrl+a delete")

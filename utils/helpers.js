@@ -40,6 +40,7 @@ async function unzipResponseBody(t, options) {
     });
   });
 }
+
 async function convertBufferBodyToString(t, options) {
   return new Promise((resolve) => {
     return resolve(JSON.parse(options.body.toString()));
@@ -48,7 +49,6 @@ async function convertBufferBodyToString(t, options) {
 
 export async function convertLoggerResponses(t, options) {
   let requests = options.requestLogger.requests;
-
   try {
     return Promise.all(
       requests.map(async (value, key) => {
